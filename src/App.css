@@ -1,38 +1,89 @@
 .App {
-  text-align: center;
+    font-size: larger;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+table {
+    width: 100%;
+    text-align: left;
+    margin: 30px;
+    border: 5px solid blue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+tr {
+    border: 2px solid blue;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+th {
+    text-align: center;
+    padding: 10px;
+    margin: 15px;
+    font-weight: 900;
 }
 
-.App-link {
-  color: #61dafb;
+td {
+    text-align: center;
+    padding: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.button-red {
+    background-color: red;
+    color: black;
+    font-size: 25px;
+}
+
+.button-edit {
+    background-color: orange;
+    color: black;
+    font-size: 25px;
+}
+
+.button-submit {
+    background-color: greenyellow;
+    color: black;
+    font-size: 25px;
+}
+
+nav {
+    font-size: 35px;
+    background-color: mistyrose;
+}
+
+h1 {
+    font-size: 45px;
+    margin: 20px;
+    padding: 20px;
+}
+
+label {
+    padding: 30px;
+    padding-right: 70px;
+    text-align: left;
+}
+
+input {
+    margin: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+div.input {
+    text-align: right;
+}
+
+.danger-text {
+    text-align: center;
+    font-size: 50px;
+    padding: 40px;
+    color: red;
+    font-weight: 1000;
+}
+
+.sent-text {
+    text-align: center;
+    font-size: 50px;
+    padding: 40px;
+    color: greenyellow;
+    font-weight: 1000;
 }
