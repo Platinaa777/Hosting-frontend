@@ -6,6 +6,7 @@ import EditForm from "./components/EditForm";
 import './App.css'
 
 function App() {
+  // пользователи
   const [users, setUsers] = React.useState([]);
     
   const DeleteUser = async (id) => {
@@ -62,7 +63,7 @@ function App() {
   const getCurrentUser = (user) => {
     setCurrentUser(user);
   };
-
+  
   useEffect(() => {
       ShowUserList();
   }, []);
