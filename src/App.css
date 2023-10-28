@@ -72,6 +72,14 @@ div.input {
     text-align: right;
 }
 
+.request-text {
+    text-align: center;
+    font-size: 50px;
+    padding: 40px;
+    color: rgb(202, 135, 10);
+    font-weight: 1000;
+}
+
 .danger-text {
     text-align: center;
     font-size: 50px;

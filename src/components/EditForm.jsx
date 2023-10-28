@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import Input from "./Input";
 
 const EditForm = ({edit, editedUser}) => {
-    const [isValid, setIsValid] = React.useState(true);
+    const [isSent, setIsSent] = React.useState(false);
 
     const [user, setUser] = useState(
         {
@@ -24,7 +24,7 @@ const EditForm = ({edit, editedUser}) => {
         };
         edit(newUser);
         setUser({firstName: '', lastName: '', age: 0, email: ""})
-        setIsValid(!isValid);
+        setIsSent(true);
       };
 
     return (
@@ -75,9 +75,9 @@ const EditForm = ({edit, editedUser}) => {
                 <button className="button-submit" onClick={editUser}>Edit user</button>
             </form>
             {
-                isValid 
-                ? ""
-                : <p className="danger-text">Current user is not valid, repeat your request</p>
+                isSent 
+                ? <p className="request-text">Your request was sent to the server, please check main page to know about changes</p>
+                : ""
             }
         </div>
     );

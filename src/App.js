@@ -8,9 +8,11 @@ import './App.css'
 function App() {
   // пользователи
   const [users, setUsers] = React.useState([]);
+  const connectionString = "https://backend-rlhe.onrender.com"; // prod
+  const developmentString = "http://localhost:5213"; // local testing
     
   const DeleteUser = async (id) => {
-      const response = await fetch(`http://localhost:5213/users/${id}`, {
+      const response = await fetch(connectionString + `/users/${id}`, {
               method: 'DELETE'
               });
       if (response.ok) {
@@ -23,7 +25,7 @@ function App() {
 
   const EditUser = async (user) => {
     console.log(user.id)
-    const response = await fetch(`http://localhost:5213/users/${user.id}`, {
+    const response = await fetch(connectionString + `/users/${user.id}`, {
       method: 'PUT',
       headers: {
       'Content-Type': 'application/json'
@@ -39,7 +41,7 @@ function App() {
 
   const CreateUser = async (user) => {
     console.log("add")
-      const response = await fetch('http://localhost:5213/users', {
+      const response = await fetch(connectionString + '/users', {
           method: 'POST',
           headers: {
           'Content-Type': 'application/json'
@@ -54,7 +56,7 @@ function App() {
   };
 
   const ShowUserList = async () => {
-      const response = await fetch("http://localhost:5213/users");
+      const response = await fetch(connectionString + "/users");
       const newUsers = await response.json();
       setUsers([...newUsers].sort((a,b) => a.id - b.id))
   }; 
