@@ -19,7 +19,7 @@ const AddForm = ({create}) => {
         };
 
         create(newUser, GetStatusRequest);
-        setUser({firstName: '', lastName: '', age: 0, email: ""})
+        setUser({firstName: newUser.firstName, lastName: newUser.lastName, age: newUser.Age, email: newUser.email})
       };
 
       const GetStatusRequest = (ok) => {
