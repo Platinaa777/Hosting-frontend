@@ -3,14 +3,23 @@ import {Link} from "react-router-dom"
 import Input from "./Input";
 
 const EditForm = ({edit, editedUser}) => {
-    const [isSent, setIsSent] = React.useState(false);
-
+    const [message, SetMessage] = React.useState('');
+    // текущий пользователь которого выбрали
     const [user, setUser] = useState(
         {
          firstName: editedUser.firstName,
          lastName: editedUser.lastName,
          age: editedUser.age,
-         email: editedUser.email});
+         email: editedUser.email
+        });
+
+    const GetStatusRequest = (ok) => {
+        if (ok) {
+            SetMessage("Пользователь успешно изменился!")
+        } else {
+            SetMessage("Не удалось изменить пользователя");
+        }
+    }
 
     const editUser = (e) => {
         e.preventDefault();
@@ -22,9 +31,8 @@ const EditForm = ({edit, editedUser}) => {
           Age: user.age,
           email: user.email
         };
-        edit(newUser);
+        edit(newUser, GetStatusRequest);
         setUser({firstName: '', lastName: '', age: 0, email: ""})
-        setIsSent(true);
       };
 
     return (
@@ -75,9 +83,7 @@ const EditForm = ({edit, editedUser}) => {
                 <button className="button-submit" onClick={editUser}>Edit user</button>
             </form>
             {
-                isSent 
-                ? <p className="request-text">Your request was sent to the server, please check main page to know about changes</p>
-                : ""
+                <h1>{message}</h1>
             }
         </div>
     );

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const User = ({info, remove, getUser}) => {
+    // getUser функция нужна для того чтобы в формочке были уже заполнены поля пользователя
     return (
         <tr>
             <td>{info.id}</td>

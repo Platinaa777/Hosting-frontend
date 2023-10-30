@@ -9,12 +9,13 @@ function App() {
   // пользователи
   const [users, setUsers] = React.useState([]);
   const connectionString = "https://backend-rlhe.onrender.com"; // prod
-  const developmentString = "http://localhost:5213"; // local testing
+  // const connectionString = "http://localhost:5213"; // local testing
     
   const DeleteUser = async (id) => {
       const response = await fetch(connectionString + `/users/${id}`, {
               method: 'DELETE'
               });
+
       if (response.ok) {
           const data = await response.json();
           setUsers(data);
@@ -23,8 +24,7 @@ function App() {
       return;
   };
 
-  const EditUser = async (user) => {
-    console.log(user.id)
+  const EditUser = async (user, callback) => {
     const response = await fetch(connectionString + `/users/${user.id}`, {
       method: 'PUT',
       headers: {
@@ -35,12 +35,15 @@ function App() {
     if (response.ok) {
         const data = await response.json();
         setUsers(data);
+        // отправляем ответ форме с изменение пользователя
+        callback(true);
+        return;
     }
+    callback(false);
     return;
   };
 
-  const CreateUser = async (user) => {
-    console.log("add")
+  const CreateUser = async (user, callback) => {
       const response = await fetch(connectionString + '/users', {
           method: 'POST',
           headers: {
@@ -51,14 +54,18 @@ function App() {
       if (response.ok) {
           const data = await response.json();
           setUsers(data);
+          // отправляем ответ формочке с добавлением пользователя
+          callback(true);
+          return;
       }
+      callback(false);
       return;
   };
 
   const ShowUserList = async () => {
       const response = await fetch(connectionString + "/users");
       const newUsers = await response.json();
-      setUsers([...newUsers].sort((a,b) => a.id - b.id))
+      setUsers(newUsers);
   }; 
 
   const [currentUser, setCurrentUser] = React.useState({});

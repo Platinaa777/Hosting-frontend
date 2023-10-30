@@ -3,7 +3,9 @@ import {Link} from "react-router-dom"
 import Input from "./Input";
 
 const AddForm = ({create}) => {
-    const [isSent, setIsSent] = React.useState(false);
+    // сообщение которое оповещает пользователя об успешности операции
+    const [message, SetMessage] = React.useState('');
+
     const [user, setUser] = useState(
         {firstName: '', lastName: '', age: 0, email: ""});
 
@@ -15,11 +17,18 @@ const AddForm = ({create}) => {
           Age: user.age,
           email: user.email
         };
-        console.log(newUser)
-        create(newUser);
+
+        create(newUser, GetStatusRequest);
         setUser({firstName: '', lastName: '', age: 0, email: ""})
-        setIsSent(true);
       };
+
+      const GetStatusRequest = (ok) => {
+        if (ok) {
+            SetMessage("Пользователь успешно добавился!")
+        } else {
+            SetMessage("Не удалось добавить пользователя");
+        }
+    }
 
     return (
         <div>
@@ -69,9 +78,7 @@ const AddForm = ({create}) => {
                 <button className="button-submit" onClick={addNewPost}>Add new user</button>
             </form>
             {
-                isSent 
-                ? <p className="sent-text">Your request was sent to the server, check home page</p>
-                : ""
+                <h1>{message}</h1>
             }
         </div>
     );
