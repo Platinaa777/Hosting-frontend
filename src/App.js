@@ -8,7 +8,7 @@ import './App.css'
 function App() {
   // пользователи
   const [users, setUsers] = React.useState([]);
-  const connectionString = "https://backend-rlhe.onrender.com"; // prod
+  const connectionString = "https://backend-nwso.onrender.com"; // prod
   // const connectionString = "http://localhost:5213"; // local testing
     
   const DeleteUser = async (id) => {
