@@ -32,7 +32,13 @@ const EditForm = ({edit, editedUser}) => {
           email: user.email
         };
         edit(newUser, GetStatusRequest);
-        setUser({firstName: '', lastName: '', age: 0, email: ""})
+        setUser(
+            {
+                firstName: editedUser.firstName,
+                lastName: editedUser.lastName,
+                age: editedUser.age,
+                email: editedUser.email
+            })
       };
 
     return (
